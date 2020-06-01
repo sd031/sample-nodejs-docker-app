@@ -5,10 +5,14 @@
   "author": "First Last <first.last@example.com>",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.16.1",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
   }
 }
