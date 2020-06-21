@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sample_app:v1
+    restart: unless-stopped
+    #env_file: .env
+    environment:
+      - NODE_ENV=test
+    ports:
+      - "8080:8080"
+    deploy:
+     replicas: 4
+     restart_policy:
+       max_attempts: 3
+       condition: on-failure       
+     update_config:
+       parallelism: 3
+       delay: 10s
+
+  proxy:
+      build:
+        context: .
+        dockerfile: Dockerfile.nginx
+      image: nginx_proxy:v1
+      ports:
+        - 80:80
+      depends_on:
+        - nodeapp
+      deploy:
+        placement:
+          constraints: [node.role == manager]
+      depends_on:
+        - nodejs

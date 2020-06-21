@@ -1,0 +1,14 @@
+Scaling Docker using Docker + Docker-compose + Docker Swarm
+
+Docker-compose build
+
+docker swarm init
+
+docker stack deploy -c docker-compose.yml swarmnodeapp
+
+Check Service list: 
+docker service ls
+
+Scalig:
+
+docker service scale swarmnodeapp_nodejs=20
