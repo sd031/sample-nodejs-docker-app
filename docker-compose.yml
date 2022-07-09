@@ -33,5 +33,3 @@ services:
       deploy:
         placement:
           constraints: [node.role == manager]
-      depends_on:
-        - nodejs
