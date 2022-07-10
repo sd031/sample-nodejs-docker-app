@@ -29,7 +29,7 @@ services:
       ports:
         - 80:80
       depends_on:
-        - nodeapp
+        - nodejs
       deploy:
         placement:
           constraints: [node.role == manager]
